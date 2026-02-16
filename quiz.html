@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- HTML Meta Information -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marvel Rivals - Hero Recommendation Quiz">
+    <title>Marvel Rivals - Quiz</title>
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header with Navigation Bar -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">⚔️ MARVEL RIVALS</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="heroes.html">Heroes</a>
+                <a href="quiz.html" class="active">Quiz</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Page Title -->
+        <section>
+            <h1>Find Your Hero</h1>
+            <p>Answer a few questions about your playstyle and preferences to discover your perfect Marvel Rivals hero match.</p>
+        </section>
+
+        <!-- Quiz Form Section -->
+        <section>
+            <!-- 
+                FORM ELEMENT - Required for project
+                The <form> element creates an interactive questionnaire
+                action="recommended.html" - specifies the page where form data should be sent when submitted
+                This simulates form submission by loading the results page
+            -->
+            <form action="recommended.html" method="GET">
+                
+                <!-- 
+                    DATALIST ELEMENT - Required for project
+                    <datalist> provides autocomplete suggestions for text inputs
+                    The id="roleList" connects this datalist to the role input field using list attribute
+                    Users can either type freely OR select from: Duelist, Vanguard, Strategist
+                    This is useful for guiding users while still allowing custom input
+                -->
+                <div class="form-group">
+                    <label for="heroRole">Preferred Role:</label>
+                    <input 
+                        type="text" 
+                        id="heroRole" 
+                        name="role" 
+                        list="roleList"
+                        placeholder="Type or select a role..."
+                        required
+                    >
+                    <datalist id="roleList">
+                        <option value="Duelist">Duelist - Aggressive, damage-focused offensive hero</option>
+                        <option value="Vanguard">Vanguard - Defensive, protection-oriented frontline hero</option>
+                        <option value="Strategist">Strategist - Support, healing and utility-focused hero</option>
+                    </datalist>
+                </div>
+
+                <!-- 
+                    INPUTMODE ATTRIBUTE - Required for project
+                    inputmode="numeric" optimizes the mobile keyboard to display a numeric keypad
+                    This improves user experience on mobile devices for numeric inputs
+                    The difficulty level ranges from 1 (beginner) to 10 (expert)
+                -->
+                <div class="form-group">
+                    <label for="difficulty">Difficulty Level (1-10):</label>
+                    <input 
+                        type="number" 
+                        id="difficulty" 
+                        name="difficulty" 
+                        inputmode="numeric"
+                        min="1" 
+                        max="10" 
+                        placeholder="Enter a number from 1 to 10"
+                        required
+                    >
+                    <small style="color: var(--text-gray);">1 = Beginner, 10 = Expert</small>
+                </div>
+
+                <!-- Experience with similar games -->
+                <div class="form-group">
+                    <label for="experience">Years of Gaming Experience:</label>
+                    <select id="experience" name="experience" required>
+                        <option value="">-- Select an option --</option>
+                        <option value="0-1">Less than 1 year</option>
+                        <option value="1-3">1-3 years</option>
+                        <option value="3-5">3-5 years</option>
+                        <option value="5+">5+ years</option>
+                    </select>
+                </div>
+
+                <!-- Playstyle preference -->
+                <div class="form-group">
+                    <label for="playstyle">What best describes your playstyle?</label>
+                    <select id="playstyle" name="playstyle" required>
+                        <option value="">-- Select an option --</option>
+                        <option value="aggressive">Aggressive - I like to attack and eliminate enemies</option>
+                        <option value="defensive">Defensive - I prefer to protect and support my team</option>
+                        <option value="tactical">Tactical - I enjoy planning and out-thinking opponents</option>
+                        <option value="balanced">Balanced - I adapt to the situation</option>
+                    </select>
+                </div>
+
+                <!-- 
+                    ACCEPT ATTRIBUTE - Required for project
+                    accept="image/png, image/jpeg, video/mp4" restricts file input to specific file types
+                    This validates file uploads before they reach the server
+                    Users can only select PNG images, JPEG images, or MP4 videos
+                    The browser will filter the file picker to show only these types
+                -->
+                <div class="form-group">
+                    <label for="heroScreenshot">Upload a Screenshot or Hero Video (Optional):</label>
+                    <input 
+                        type="file" 
+                        id="heroScreenshot" 
+                        name="screenshot"
+                        accept="image/png, image/jpeg, video/mp4"
+                    >
+                    <small style="color: var(--text-gray);">Accepts: PNG, JPEG, or MP4 files only</small>
+                </div>
+
+                <!-- Additional comments -->
+                <div class="form-group">
+                    <label for="comments">Additional Comments (Optional):</label>
+                    <textarea 
+                        id="comments" 
+                        name="comments" 
+                        placeholder="Tell us more about your hero preferences or playstyle..."
+                    ></textarea>
+                </div>
+
+                <!-- 
+                    BUTTON ELEMENT - Required for project
+                    The <button> element with type="submit" sends the form data to the page specified in the form's action attribute
+                    In this case, it submits to "recommended.html" where the quiz results are displayed
+                    type="submit" is implicit but specified for clarity
+                -->
+                <button type="submit" class="button" style="width: 100%; margin-top: 2rem;">
+                    Get My Hero Recommendation
+                </button>
+            </form>
+        </section>
+
+        <!-- Information about the quiz -->
+        <section style="background-color: var(--secondary-dark); padding: 2rem; border-radius: 8px; margin-top: 3rem; border-left: 5px solid var(--accent-gold);">
+            <h3>How This Works</h3>
+            <p>Our quiz analyzes your answers to determine which Marvel Rivals hero best matches your playstyle:</p>
+            <ul style="margin-left: 2rem; color: var(--text-gray);">
+                <li><strong>Role Preference:</strong> Your chosen role determines the base hero category</li>
+                <li><strong>Difficulty Level:</strong> Affects which heroes are recommended based on complexity</li>
+                <li><strong>Gaming Experience:</strong> Influences hero selection to match your skill level</li>
+                <li><strong>Playstyle:</strong> Refines the recommendation to your preferred approach to combat</li>
+            </ul>
+            <p style="margin-top: 1rem;">After submitting, you'll receive a personalized hero recommendation with a full explanation of why this hero matches your profile!</p>
+        </section>
+    </main>
+
+
+</body>
+</html>
